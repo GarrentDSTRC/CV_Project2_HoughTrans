@@ -1,13 +1,18 @@
-1. Hough_Transform.py
+
+
+```csharp
+pip install -r requirements.txt
+```
+### 1. Hough_Transform.py
 
 This file has the code for detecting circles in a given image using Hough Transform.
-The Radius range can be changed and adjusted as per need in order to improve the performance of the program
+The Radius range original_image_path, and Threshold can be changed and adjusted as per need in order to improve the performance of the program. The default setting is "example1" , 50-140 , 250. The optimal parameter of "example2"  is 100-150, 280.
 
-2. Randomized_Circle_Detection.py
+### 2. Test.py
 
-This file is basically the implementation of the Algorithm given in the Reference paper given in the repository.
-Please note that not all the thresholds given in the reference paper have been used to detect the circle.
+After drawing, the program will save the hough space as acc_array.npy. 
 
-Feel free to contribute to codes given.
-
-Happy coding! :)
+![](Readme_md_files%5Cimage.png?v=1&type=image)
+Then, Test.py is used to combine the different acc_array.npy responding to different ranges of radius and test a proper threshold.
+But those .npy files are too large, I have to delete them before handling them.
+The results with different parameters are named as "Detected_circle_HT-example*-r*_*-thesholds *"
