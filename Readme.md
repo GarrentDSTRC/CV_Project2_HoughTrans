@@ -17,4 +17,4 @@ Then, Test.py is used to combine the different acc_array.npy responding to diffe
 But those .npy files are too large, I have to delete them before handling them.
 The results with different parameters are named as "Detected_circle_HT-example*-r*_*-thesholds *"
 #
-UPDATE: Use numba package to accelerate the process.
+2022.4.25 UPDATE: Use numba package to accelerate the process.
