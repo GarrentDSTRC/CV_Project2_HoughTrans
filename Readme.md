@@ -12,7 +12,7 @@ The Radius range original_image_path, and Threshold can be changed and adjusted 
 
 After drawing, the program will save the hough space as acc_array.npy. 
 
-![](Readme_md_files%5Cimage.png?v=1&type=image)
+![alt](https://github.com/GarrentDSTRC/CV_Project2_HoughTrans/blob/master/Readme_md_files/image.png)  
 Then, Test.py is used to combine the different acc_array.npy responding to different ranges of radius and test a proper threshold.
 But those .npy files are too large, I have to delete them before handling them.
 The results with different parameters are named as "Detected_circle_HT-example*-r*_*-thesholds *"
