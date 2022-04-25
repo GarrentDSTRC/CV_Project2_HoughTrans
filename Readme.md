@@ -16,3 +16,5 @@ After drawing, the program will save the hough space as acc_array.npy.
 Then, Test.py is used to combine the different acc_array.npy responding to different ranges of radius and test a proper threshold.
 But those .npy files are too large, I have to delete them before handling them.
 The results with different parameters are named as "Detected_circle_HT-example*-r*_*-thesholds *"
+#
+UPDATE: Use numba package to accelerate the process.
