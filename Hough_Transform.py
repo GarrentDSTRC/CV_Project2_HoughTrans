@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import time
 import matplotlib.pyplot as plt
+from numba import jit
 
 original_image = cv2.imread('example1.png',1)
 #gray_image = cv2.imread('Sample_Input.jpg',0)
@@ -67,8 +68,8 @@ def fill_acc_array_Bresenham(x0,y0,radius):
             x=x-1
             decision += 2 * (y - x) + 1
 
-
-def fill_acc_array_MidPoint(x0, y0, radius):
+@jit(nopython= True,parallel=True)
+def fill_acc_array_MidPoint(x0, y0, radius,acc_array):
     x = radius
     y = 0
 
@@ -96,23 +97,29 @@ def fill_acc_array_MidPoint(x0, y0, radius):
             x +=- 1
 
 
-
-
     
     
-edges = np.where(edged_image==255)
-for i in range(0,len(edges[0])):
-    x=edges[0][i]
-    y=edges[1][i]
-    for radius in range(50,140):
-        fill_acc_array_MidPoint(x,y,radius)
 
-    '''visualize
+
+@jit(nopython= True,parallel=True)
+def findPossibleC (edges,acc_array):
+    for i in range(0,len(edges[0])):
+        x=edges[0][i]
+        y=edges[1][i]
+        for radius in range(50,140):
+            fill_acc_array_MidPoint(x,y,radius,acc_array)
+    return acc_array
+
+edges = np.where(edged_image == 255)
+acc_array=findPossibleC(edges,acc_array)
+
+
+'''visualize
         onepiece =acc_array[:,:,radius]
         cv2.imshow('onepiece', onepiece)
         cv2.waitKey(1)
     cv2.destroyAllWindows()
-    '''
+'''
 
 
 np.save('acc_array.npy',acc_array)
